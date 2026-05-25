@@ -1,17 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-    font-family: Arial;
-    background: linear-gradient(to right,#2563eb,#7c3aed);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+    min-height:100vh;
     color:white;
     text-align:center;
-    padding-top:50px;
+    padding:40px;
+}
+
+h1{
+    font-size:45px;
+    margin-bottom:30px;
 }
 
 button{
-    padding:12px 20px;
+    padding:12px 25px;
     border:none;
-    border-radius:5px;
+    border-radius:8px;
     background:white;
-    color:#111;
+    color:#111827;
+    font-size:16px;
     font-weight:bold;
     cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#111827;
+    color:white;
+}
+
+#studentList{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.student-card{
+    background:white;
+    color:#111827;
+    width:250px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.student-card:hover{
+    transform:translateY(-5px);
+}
+
+.student-card h3{
+    margin-bottom:10px;
+}
+
+.student-card p{
+    margin:5px 0;
+}
+
+.present{
+    color:green;
+    font-weight:bold;
+}
+
+.absent{
+    color:red;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:32px;
+    }
+
+    .student-card{
+        width:90%;
+    }
 }
