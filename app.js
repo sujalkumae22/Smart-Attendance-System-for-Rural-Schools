@@ -1,48 +1,52 @@
-const API = "http://localhost:8080/api";
-let students = [];
+const students = [
+    {
+        name: "Rahul Kumar",
+        roll: "101",
+        status: "Present"
+    },
+    {
+        name: "Priya Singh",
+        roll: "102",
+        status: "Absent"
+    },
+    {
+        name: "Aman Verma",
+        roll: "103",
+        status: "Present"
+    }
+];
 
-async function loadStudents() {
-    let res = await fetch(`${API}/students`);
-    students = await res.json();
+function loadStudents() {
 
-    let html = "";
-    students.forEach(s => {
-        html += `
-        <div class="student">
-            <strong>${s.name}</strong> (${s.className}) 
-            <br>
-            <label>
-                <input type="radio" name="s${s.id}" value="present"> Present
-            </label>
-            <label>
-                <input type="radio" name="s${s.id}" value="absent"> Absent
-            </label>
-        </div>
+    const studentList =
+        document.getElementById("studentList");
+
+    studentList.innerHTML = "";
+
+    students.forEach(student => {
+
+        const card = document.createElement("div");
+
+        card.classList.add("student-card");
+
+        card.innerHTML = `
+            <h3>${student.name}</h3>
+
+            <p>
+                Roll No: ${student.roll}
+            </p>
+
+            <p class="${
+                student.status === "Present"
+                ? "present"
+                : "absent"
+            }">
+
+                ${student.status}
+
+            </p>
         `;
+
+        studentList.appendChild(card);
     });
-
-    document.getElementById("studentList").innerHTML = html;
-    document.getElementById("saveBtn").style.display = "block";
-}
-
-async function saveAttendance() {
-    let today = new Date().toISOString().split("T")[0];
-
-    let attendance = students.map(s => {
-        let status = document.querySelector(`input[name="s${s.id}"]:checked`);
-        return {
-            studentId: s.id,
-            date: today,
-            present: status && status.value === "present"
-        };
-    });
-
-    let res = await fetch(`${API}/attendance`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(attendance)
-    });
-
-    let text = await res.text();
-    alert(text);
 }
