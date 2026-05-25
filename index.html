@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Attendance System</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Smart Attendance – Rural School</h2>
+    <h1>Smart Attendance System for Rural Schools</h1>
 
-<button onclick="loadStudents()">Load Students</button>
+    <button onclick="loadStudents()">
+        Load Students
+    </button>
 
-<div id="studentList"></div>
+    <div id="studentList"></div>
 
-<button id="saveBtn" onclick="saveAttendance()" style="display:none;">
-    Save Attendance
-</button>
+    <script src="app.js"></script>
 
-<script src="app.js"></script>
 </body>
 </html>
